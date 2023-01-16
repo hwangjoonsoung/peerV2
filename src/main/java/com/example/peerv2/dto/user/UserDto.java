@@ -1,10 +1,8 @@
 package com.example.peerv2.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.sql.Date;
 
@@ -13,11 +11,14 @@ import java.sql.Date;
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
-public class userDto {
+public class UserDto {
 
     private int user_num;
     private String user_email;
+
+    @JsonIgnore
     private String user_pass;
+
     private String user_name;
     private String user_gender;
     private int user_age;
