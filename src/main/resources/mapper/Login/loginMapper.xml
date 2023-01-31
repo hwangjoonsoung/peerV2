@@ -2,18 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.peerv2.repository.login.LoginRepo">
 
-    <select id="getUserInfoById" resultType="com.example.peerv2.dto.user.UserDto">
+    <select id="getUserInfoById" resultType="com.example.peerv2.dto.user.JoinUserDto">
         select *
         from user_info
         where USER_EMAIL = #{user_email}
     </select>
 
 <!--================================================================================-->
-    <select id="findMember" resultType="com.example.peerv2.dto.user.UserDto">
-        select *
+    <select id="findMember" resultType="com.example.peerv2.dto.user.GetUserDto">
+        select * , timestampdiff(year , user_birth, sysdate()) as user_age
         from user_info
         where user_num = #{user_num}
     </select>
+
+    <select id="findMemberAll" resultType="com.example.peerv2.dto.user.GetUserDto">
+        select * , timestampdiff(year , user_birth, sysdate()) as user_age
+        from user_info
+    </select>
+
+
 
 
 </mapper>

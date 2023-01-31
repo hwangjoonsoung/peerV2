@@ -1,6 +1,6 @@
 package com.example.peerv2.serive.member;
 
-import com.example.peerv2.dto.user.UserDto;
+import com.example.peerv2.dto.user.JoinUserDto;
 import com.example.peerv2.repository.member.MemberRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -10,13 +10,12 @@ import java.util.function.Consumer;
 
 @Service
 @RequiredArgsConstructor
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl {
 
     private final MemberRepo memberrepo;
     private final PasswordEncoder passwordEncoder;
 
-
-    public void insertMember(UserDto userdto) {
+        public void insertMember(JoinUserDto userdto) {
         String password = userdto.getUser_pass();
 
         //비밀번호 암호화
@@ -26,11 +25,11 @@ public class MemberServiceImpl implements MemberService {
         };
 
         encodingPassword.accept(password);
+
         memberrepo.insertMember(userdto);
     }
 
-    @Override
-    public void fetchMember(UserDto userdto) {
+    public void fetchMember(JoinUserDto userdto) {
 
         //비밀번호 암호화
         Consumer<String> encodingPassword = (passwordInput) -> {
@@ -43,10 +42,9 @@ public class MemberServiceImpl implements MemberService {
 
     }
 
-    @Override
-    public void deleteMember(UserDto userDto) {
+    public void deleteMember(JoinUserDto joinUserDto) {
 
-        memberrepo.deleteMember(userDto);
+        memberrepo.deleteMember(joinUserDto);
 
     }
 }

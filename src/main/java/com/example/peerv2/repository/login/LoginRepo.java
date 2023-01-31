@@ -1,12 +1,17 @@
 package com.example.peerv2.repository.login;
 
-import com.example.peerv2.dto.user.UserDto;
+import com.example.peerv2.dto.user.GetUserDto;
+import com.example.peerv2.dto.user.JoinUserDto;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface LoginRepo {
 
-    UserDto getUserInfoById(String user_email);
+    JoinUserDto getUserInfoById(String user_email);
 
-    UserDto findMember(int user_num);
+    GetUserDto findMember(int user_num);
+
+    List<GetUserDto> findMemberAll();
 }

@@ -1,15 +1,15 @@
 package com.example.peerv2.repository.member;
 
-import com.example.peerv2.dto.user.UserDto;
+import com.example.peerv2.dto.user.JoinUserDto;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MemberRepo {
 
-    void insertMember(UserDto userdto);
+    void insertMember(JoinUserDto userdto);
 
-    void fetchMember(UserDto userdto);
+    void fetchMember(JoinUserDto userdto);
 
-    void deleteMember(UserDto userdto);
+    void deleteMember(JoinUserDto userdto);
 
 }

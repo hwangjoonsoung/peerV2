@@ -15,7 +15,7 @@ public class PayLoad<T> {
 
     public PayLoad(T data) {
         if (data == null) {
-            this.message = "뭔가 이상한데?";
+            this.message = "fail";
         } else {
             this.message = "success";
             this.data = data;

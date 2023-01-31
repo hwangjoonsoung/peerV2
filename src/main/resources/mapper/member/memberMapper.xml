@@ -2,19 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.peerv2.repository.member.MemberRepo">
 
-    <insert id="insertMember">
-        INSERT INTO user_info (USER_EMAIL, USER_PASS, USER_NAME, USER_GENDER, USER_AGE, USER_PHONE, USER_NICKNAME,
+    <insert id="insertMember" >
+        INSERT INTO user_info (USER_EMAIL, USER_PASS, USER_NAME, USER_GENDER, USER_PHONE, USER_NICKNAME,
                                USER_REGE, use_ny, USER_AUTHORITY, USER_BIRTH)
-        VALUES (#{user_email}, #{user_pass}, #{user_name}, #{user_gender}, #{user_age}, #{user_phone}, #{user_nickname},
+        VALUES (#{user_email}, #{user_pass}, #{user_name}, #{user_gender}, #{user_phone}, #{user_nickname},
                 sysdate(), "Y", #{user_authority}, #{user_birth})
     </insert>
+
+    <!--       <selectKey order="AFTER" resultType="com.example.peerv2.dto.user.GetUserDto" keyProperty="user_nickname">
+            select * from user_info where USER_NICKNAME = {user_nickname}
+        </selectKey>-->
 
     <update id="fetchMember">
         UPDATE user_info
         SET USER_PASS= #{user_pass},
             USER_NAME=#{user_name},
             USER_GENDER=#{user_gender},
-            USER_AGE=#{user_age},
             USER_PHONE=#{user_phone},
             USER_NICKNAME=#{user_nickname},
             USER_AUTHORITY=#{user_authority},
@@ -23,7 +26,9 @@
     </update>
 
     <update id="deleteMember">
-        update user_info set use_ny = "N" where user_num = #{user_num}
+        update user_info
+        set use_ny = "N"
+        where user_num = #{user_num}
     </update>
 
 </mapper>
